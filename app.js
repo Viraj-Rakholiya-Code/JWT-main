@@ -10,7 +10,7 @@ var loginRouter = require("./routes/login");
 var dashboardRouter = require("./routes/dashboard");
 var deleteRouter = require("./routes/delete");
 var editRouter = require("./routes/edit");
-
+const cors = require('cors');
 var app = express();
 
 mongoose
@@ -31,6 +31,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
+
 
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
